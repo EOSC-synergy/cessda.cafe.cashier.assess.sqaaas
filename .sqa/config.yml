@@ -1,0 +1,52 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: fix/updatego
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    github.com/cessda/cessda.cafe.cashier:
+      branch: master
+      repo: https://github.com/cessda/cessda.cafe.cashier
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/cessda/cessda.cafe.cashier git:
+        commands:
+        - /usr/bin/env sh .sqa/script.horizon_compassionate_chipmunk.sh
+        container: qc.acc_paprika_eccentric_roadrunner
+  QC.Doc:
+    repos:
+      github.com/cessda/cessda.cafe.cashier find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.cyan_eccentric_marmoset.sh
+        container: qc.doc_vermilion_productive_roc
+      github.com/cessda/cessda.cafe.cashier git:
+        commands:
+        - /usr/bin/env sh .sqa/script.mist_positive_moose.sh
+        container: qc.doc_scarlet_blissful_uakari
+  QC.Lic:
+    repos:
+      github.com/cessda/cessda.cafe.cashier licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.cerise_enthusiastic_gibbon.sh
+        container: qc.lic_zinnia_tranquil_manta
+  QC.Sty:
+    repos:
+      github.com/cessda/cessda.cafe.cashier hadolint:
+        commands:
+        - /usr/bin/env sh .sqa/script.gold_organized_dragon.sh
+        container: qc.sty_pink_calm_orca
+      github.com/cessda/cessda.cafe.cashier jsonlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.sienna_tenacious_starfish.sh
+        container: qc.sty_tide_dizzy_platypus
+  QC.Ver:
+    repos:
+      github.com/cessda/cessda.cafe.cashier get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.flamingo_bright_armadillo.sh
+        container: qc.ver_beige_amused_heron
+timeout: 5400
